@@ -1,0 +1,10 @@
+nav {
+    background-color: var(--color-primary);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+nav .logo {
+    color: var(--color-white);
+}

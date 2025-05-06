@@ -44,6 +44,7 @@
 
 .form-group label span {
     color: red;
+    margin-left: 4px;
 }
 
 input[type="email"],
