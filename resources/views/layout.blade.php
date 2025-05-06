@@ -19,6 +19,10 @@
   <!-- Global Styles -->
   <link rel="stylesheet" href="{{ asset('css/globals.css') }}"> 
   
+  <style> 
+    @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+  </style>
   <!-- Additional page-specific styles -->
   @stack('styles')
 
