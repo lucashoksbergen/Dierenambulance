@@ -15,11 +15,13 @@ return new class extends Migration {
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password'); // Needs encryption
             $table->string('role');
-            $table->string('address');
+            $table->string('street');
+            $table->integer('house_number');
             $table->string('postal_code');
             $table->string('city');
+            $table->string('municipality');
             $table->rememberToken();
             $table->timestamps();
         });

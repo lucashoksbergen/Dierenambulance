@@ -14,9 +14,10 @@ return new class extends Migration {
             $table->id();
             $table->string('email');
             $table->integer('phone_number');
-            $table->string('address');
+            $table->string('street');
             $table->integer('house_number');
             $table->string('postal_code');
+            $table->string('city');
             $table->string('municipality');
             $table->timestamps();
         });

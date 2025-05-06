@@ -15,14 +15,19 @@ return new class extends Migration {
             $table->string('type');
             $table->text('date'); // YYYY-MM-DD
             $table->unsignedBigInteger('vehicle_volunteer_id'); // Linked to Vehicle_Volunteer, id which is linked to driver(s) and a vehicle
+
+            // Caller information
             $table->unsignedBigInteger('call_taker'); // Linked to Volunteer Table, id of the callcenter person
             $table->string('caller_name');
             $table->integer('caller_phone_number');
             $table->text('description')->nullable();
-            $table->string('address'); // Home town/city/etc.
+            $table->string('street_name');
             $table->integer('house_number');
             $table->string('postal_code');
+            $table->string('city'); // Home town/city/etc.
             $table->string('municipality');
+
+            // Animal information
             $table->unsignedBigInteger('animal_id'); // Linked to Animal Table
             $table->text('report_status');
             $table->boolean('rijkswaterstaat_called');
