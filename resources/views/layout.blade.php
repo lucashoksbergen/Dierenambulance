@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DierenAmbulance is a service that provides emergency care and transportation for sick or injured animals.">
+  <meta name="keywords" content="DierenAmbulance, animal rescue, emergency care, animal transport">
+  <title>@yield('title', 'DierenAmbulance')</title>
+
+      <!-- For iOS Safari -->
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+      <!-- General theme color for supported browsers -->
+        <meta name="theme-color" content="#000">
+      
+      <!-- For Microsoft Edge -->
+        <meta name="msapplication-navbutton-color" content="#000">
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="{{ asset('css/globals.css') }}"> 
+  
+  <!-- Additional page-specific styles -->
+  @stack('styles')
+
+</head>
+<body>
+  <!-- Navigation Component -->
+  
+
+  <!-- Main Content Area -->
+  <main>
+    @yield('content')
+  </main>
+
+  <!-- Footer -->
+
+  <!-- Global Scripts -->
+  <script src="{{ asset('js/global.js') }}"></script>
+  
+  <!-- Additional page-specific scripts -->
+  @stack('scripts')
+</body>
+</html>
