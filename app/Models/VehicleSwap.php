@@ -10,4 +10,9 @@ class VehicleSwap extends Model
     {
         return $this->hasMany(Vehicle::class);
     }
+
+    public function user()
+    {
+        return $this->hasMany(User::class);
+    }
 }

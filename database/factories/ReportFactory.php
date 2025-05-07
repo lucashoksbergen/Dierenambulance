@@ -17,10 +17,9 @@ class ReportFactory extends Factory
     public function definition(): array
     {
         return [
-            'type' => fake()->randomElement(['dog', 'cat', 'other']),
+            // Does not set the other ids used in this, this does occur in the seeder
+            'type' => fake()->randomElement(['dog', 'cat', 'bird', 'other']),
             'date' => fake()->date(),
-            'vehicle_volunteer_id' => '1',
-            'call_taker' => '1',
             'caller_name' => fake()->name(),
             'caller_phone_number' => fake()->phoneNumber(),
             'description' => fake()->text(),
@@ -29,10 +28,8 @@ class ReportFactory extends Factory
             'postal_code' => fake()->postcode(),
             'city' => fake()->city(),
             'municipality' => fake()->city(),
-            'animal_id' => '1',
             'report_status' => fake()->randomElement(['open', 'closed']),
             'rijkswaterstaat_called' => fake()->boolean(),
-            'payment_id' => '1',
             'created_at' => now(),
             'updated_at' => now(),
 

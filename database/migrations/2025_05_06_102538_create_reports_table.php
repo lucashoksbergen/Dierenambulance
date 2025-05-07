@@ -14,10 +14,10 @@ return new class extends Migration {
             $table->id();
             $table->string('type');
             $table->text('date'); // YYYY-MM-DD
-            $table->unsignedBigInteger('vehicle_volunteer_id'); // Linked to Vehicle_Volunteer, id which is linked to driver(s) and a vehicle
+            $table->unsignedBigInteger('user_vehicle_id'); // Linked to user_vehicle, id which is linked to driver(s) and a vehicle
 
             // Caller information
-            $table->unsignedBigInteger('call_taker'); // Linked to Volunteer Table, id of the callcenter person
+            $table->unsignedBigInteger('user_id'); // Linked to Volunteer Table, id of the callcenter person / referred to as call taker in figma
             $table->string('caller_name');
             $table->integer('caller_phone_number');
             $table->text('description')->nullable();

@@ -18,11 +18,13 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    // protected $fillable = [
+    //     'name',
+    //     'email',
+    //     'password',
+    // ];
+
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -49,7 +51,12 @@ class User extends Authenticatable
 
     protected function report()
     {
-        return $this->hasMany(Report::class);
+        return $this->belongsToMany(Report::class);
+    }
+
+    public function vehicle()
+    {
+        return $this->belongsToMany(Vehicle::class);
     }
 
 }

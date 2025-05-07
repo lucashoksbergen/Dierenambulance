@@ -12,8 +12,8 @@ return new class extends Migration {
     {
         Schema::create('vehicle_swap', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('vehicle_volunteer_old');
-            $table->unsignedBigInteger('vehicle_volunteer_new');
+            $table->unsignedBigInteger('user_vehicle_old');
+            $table->unsignedBigInteger('user_vehicle_new');
             $table->boolean('materials_check');
             $table->integer('cash');
             $table->timestamps();
