@@ -19,7 +19,7 @@ class AnimalFactory extends Factory
     {
         return [
             'owner_id' => Owner::factory(),
-            'condition' => fake()->randomElement(['healthy', 'injured']),
+            'condition' => fake()->randomElement(['hurt', 'healthy', 'sick', 'dead', 'stray', 'young', 'unknown']),
             'type' => fake()->randomElement(['dog', 'cat', 'bird', 'other']),
             'race' => fake()->word(),
             'gender' => fake()->randomElement(['male', 'female', 'neutered', 'unknown']),

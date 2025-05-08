@@ -13,14 +13,14 @@ return new class extends Migration {
         Schema::create('animals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('owner_id');
-            $table->string('condition');
-            $table->string('type');
+            $table->enum('condition', ['hurt', 'healthy', 'sick', 'dead', 'stray', 'young', 'unknown']);
+            $table->enum('type', ['dog', 'cat', 'bird', 'other']);
             $table->string('race')->nullable();
-            $table->string('gender');
+            $table->enum('gender', ['male', 'female', 'neutered', 'unknown']);
             $table->text('description');
-            $table->string('chip_number'); // Probably int instead
+            $table->bigInteger('chip_number'); // Can store up to 19 digits, chip number requires 15
             $table->boolean('registered');
-            $table->string('registered_at');
+            $table->string('registered_at'); // place 
             // Do we need a name?
             $table->timestamps();
         });

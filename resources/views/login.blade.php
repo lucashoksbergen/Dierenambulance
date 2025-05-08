@@ -3,7 +3,7 @@
 @section('title', 'DierenAmbulance - Welcome')
 
 @section('content')
- <h1>Login</h1>
+  <h1>Login</h1>
 @endsection
 
 @push('styles')

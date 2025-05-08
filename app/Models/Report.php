@@ -33,17 +33,17 @@ class Report extends Model
 
     public function vehicle()
     {
-        return $this->belongsTo(Vehicle::class);
+        return $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
 
     public function animal()
     {
-        return $this->belongsTo(Animal::class);
+        return $this->belongsTo(Animal::class, 'animal_id');
     }
 
     public function payment()
     {
-        return $this->hasOne(Payment::class);
+        return $this->hasOne(Payment::class, 'payment_id');
     }
 
 
