@@ -49,14 +49,22 @@ class User extends Authenticatable
         ];
     }
 
-    protected function report()
+    protected function callReports()
     {
-        return $this->belongsToMany(Report::class);
+        return $this->hasMany(Report::class, 'user_id');
     }
 
-    public function vehicle()
+    protected function drivingReports()
     {
-        return $this->belongsToMany(Vehicle::class);
+        return $this->hasMany(Report::class, 'driver_id');
     }
+
+    protected function codrivingReports()
+    {
+        return $this->hasMany(Report::class, 'codriver_id');
+    }
+
+
+
 
 }

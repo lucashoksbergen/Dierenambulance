@@ -13,7 +13,7 @@ class Owner extends Model
     protected $guarded = [];
 
 
-    public function animal()
+    public function animals()
     {
         return $this->hasMany(Animal::class);
     }

@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('animals', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('owner_id');
+            $table->foreignId('owner_id');
             $table->string('condition');
             $table->string('type');
             $table->string('race')->nullable();

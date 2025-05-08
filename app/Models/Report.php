@@ -16,9 +16,24 @@ class Report extends Model
     protected $guarded = [];
 
 
-    public function user()
+    public function user() // Callcenter person
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function driver() // Callcenter person
+    {
+        return $this->belongsTo(User::class, 'driver_id');
+    }
+
+    public function codriver() // Callcenter person
+    {
+        return $this->belongsTo(User::class, 'codriver_id');
+    }
+
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class);
     }
 
     public function animal()
@@ -30,5 +45,8 @@ class Report extends Model
     {
         return $this->hasOne(Payment::class);
     }
+
+
+
 
 }

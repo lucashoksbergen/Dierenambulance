@@ -1,0 +1,28 @@
+[90m= [39m[34;4mIlluminate\Database\Eloquent\Collection[39;24m {#5202
+    [34mall[39m: [
+      [34;4mApp\Models\Report[39;24m {#5208
+        [34mid[39m: [35m1[39m,
+        [34mtype[39m: "[32mcat[39m",
+        [34mdate[39m: "[32m1992-02-14[39m",
+        [34muser_id[39m: [35m1[39m,
+        [34mdriver_id[39m: [35m1[39m,
+        [34mcodriver_id[39m: [35m4[39m,
+        [34mvehicle_id[39m: [35m1[39m,
+        [34mcaller_name[39m: "[32mProf. Kristopher Kovacek DVM[39m",
+        [34mcaller_phone_number[39m: "[32m+1-409-971-6271[39m",
+        [34mdescription[39m: "[32mOmnis quia voluptatem natus provident veniam dolorem atque. Ullam omnis at expedita tempore et. Distinctio aut architecto inventore similique ut. Molestiae ut quasi quasi quisquam.[39m",
+        [34mstreet_name[39m: "[32mElias Corner[39m",
+        [34mhouse_number[39m: [35m38[39m,
+        [34mpostal_code[39m: "[32m94709-2706[39m",
+        [34mcity[39m: "[32mTracefurt[39m",
+        [34mmunicipality[39m: "[32mPort Ryan[39m",
+        [34manimal_id[39m: [35m1[39m,
+        [34mreport_status[39m: "[32mclosed[39m",
+        [34mrijkswaterstaat_called[39m: [35m1[39m,
+        [34mpayment_id[39m: [35m1[39m,
+        [34mcreated_at[39m: "[32m2025-05-08 10:02:13[39m",
+        [34mupdated_at[39m: "[32m2025-05-08 10:02:13[39m",
+      },
+    ],
+  }
+

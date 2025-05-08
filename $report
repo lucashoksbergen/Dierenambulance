@@ -1,0 +1,26 @@
+[90m= [39m[34;4mIlluminate\Database\Eloquent\Collection[39;24m {#5202
+    [34mall[39m: [
+      [34;4mApp\Models\Report[39;24m {#5208
+        [34mid[39m: [35m9[39m,
+        [34mtype[39m: "[32mdog[39m",
+        [34mdate[39m: "[32m1992-01-04[39m",
+        [34muser_vehicle_id[39m: [35m2[39m,
+        [34muser_id[39m: [35m1[39m,
+        [34mcaller_name[39m: "[32mErnestine Barrows[39m",
+        [34mcaller_phone_number[39m: "[32m+1-276-554-9677[39m",
+        [34mdescription[39m: "[32mVelit tempora nisi ad quo. Ut sequi blanditiis natus inventore laudantium. Dolor ut pariatur est molestias qui ut.[39m",
+        [34mstreet_name[39m: "[32mHane Courts[39m",
+        [34mhouse_number[39m: [35m94[39m,
+        [34mpostal_code[39m: "[32m73954[39m",
+        [34mcity[39m: "[32mHoegerport[39m",
+        [34mmunicipality[39m: "[32mSouth Savanah[39m",
+        [34manimal_id[39m: [35m9[39m,
+        [34mreport_status[39m: "[32mclosed[39m",
+        [34mrijkswaterstaat_called[39m: [35m1[39m,
+        [34mpayment_id[39m: [35m9[39m,
+        [34mcreated_at[39m: "[32m2025-05-08 08:19:40[39m",
+        [34mupdated_at[39m: "[32m2025-05-08 08:19:40[39m",
+      },
+    ],
+  }
+

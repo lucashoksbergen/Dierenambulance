@@ -14,7 +14,7 @@ class Animal extends Model
     protected $guarded = [];
 
 
-    public function report()
+    public function reports()
     {
         return $this->hasMany(Report::class);
     }

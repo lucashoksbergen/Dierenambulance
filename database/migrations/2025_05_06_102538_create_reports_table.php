@@ -14,10 +14,16 @@ return new class extends Migration {
             $table->id();
             $table->string('type');
             $table->text('date'); // YYYY-MM-DD
-            $table->unsignedBigInteger('user_vehicle_id'); // Linked to user_vehicle, id which is linked to driver(s) and a vehicle
+
+            // Linked to the user who took the report
+            $table->foreignId('user_id');
+
+            // Linked to information of driver(s) and vehicle that will be sent to the report
+            $table->foreignId('driver_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('codriver_id')->nullable()->constrained('users')->cascadeOnDelete();
+            $table->foreignId('vehicle_id')->constrained()->cascadeOnDelete();
 
             // Caller information
-            $table->unsignedBigInteger('user_id'); // Linked to Volunteer Table, id of the callcenter person / referred to as call taker in figma
             $table->string('caller_name');
             $table->integer('caller_phone_number');
             $table->text('description')->nullable();
@@ -28,10 +34,10 @@ return new class extends Migration {
             $table->string('municipality');
 
             // Animal information
-            $table->unsignedBigInteger('animal_id'); // Linked to Animal Table
+            $table->foreignId('animal_id'); // Linked to Animal Table
             $table->text('report_status');
             $table->boolean('rijkswaterstaat_called');
-            $table->unsignedBigInteger('payment_id'); // Linked to Payment table
+            $table->foreignId('payment_id'); // Linked to Payment table
             $table->timestamps();
         });
     }

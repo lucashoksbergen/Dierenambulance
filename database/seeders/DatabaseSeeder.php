@@ -18,41 +18,28 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
         User::factory(10)->create();
         Vehicle::factory(3)->create();
-        Report::factory(10)->create(
-            [
-                'animal_id' => Animal::factory(),
-                'user_id' => User::factory(),
-                'user_vehicle_id' => Vehicle::factory(),
-                'payment_id' => Payment::factory(),
-            ]
-        );
 
-        $vehicles = Vehicle::all();
-        $users = User::all();
+        Report::factory(10)->create(function () {
+            return [
+                'user_id' => User::inRandomOrder()->value('id'),
+                // No duplicate protection between driver/codriver yet.
+                'driver_id' => User::inRandomOrder()->value('id'),
+                'codriver_id' => User::inRandomOrder()->value('id'),
+                'vehicle_id' => Vehicle::inRandomOrder()->value('id'),
+                'animal_id' => Animal::factory(),
+                'payment_id' => Payment::factory(),
+            ];
+        });
 
         DB::table('vehicle_swap')->insert([
-            'user_vehicle_old' => $vehicles->random()->id,
-            'user_vehicle_new' => $vehicles->random()->id,
+            'user_vehicle_old' => Vehicle::inRandomOrder()->value('id'),
+            'user_vehicle_new' => Vehicle::inRandomOrder()->value('id'),
             'materials_check' => true,
             'cash' => fake()->numberBetween(0, 1000),
         ]);
 
-        foreach ($vehicles as $vehicle) {
-            $driver = $users->random();
-            $codriver = $users->where('id', '!=', $driver->id)->random();
-
-            // Randomly set codriver_id to NULL
-            $codriverId = fake()->boolean(30) ? null : $codriver->id;
-
-            DB::table('user_vehicle')->insert([
-                'user_id' => $driver->id,
-                'user_codriver_id' => $codriverId,
-                'vehicle_id' => $vehicle->id,
-            ]);
-        }
     }
 }
