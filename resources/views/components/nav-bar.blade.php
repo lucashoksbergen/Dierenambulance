@@ -1,3 +1,4 @@
 <nav class="navbar">
-    <div class="logo">LOGO HERE</div>
+    <!-- Replace this later -->
+    <div class="logo">Driver Report Form</div>
 </nav>
