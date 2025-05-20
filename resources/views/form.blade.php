@@ -11,71 +11,80 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="kind">What kind of animal is it?<span>*</span>
-                        <select id="type" name="type" required>
-                            <option value="dog">Dog</option>
-                            <option value="cat">Cat</option>
-                            <option value="bird">Bird</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </label>
+
+                    <fieldset>
+                        <legend>Wat voor dier is het?<span>*</span></legend>
+
+                        <label class="radio-row">
+                            <input type="radio" name="type" value="dog" required onclick="toggleOtherField()"> Hond
+                        </label>
+
+                        <label class="radio-row">
+                            <input type="radio" name="type" value="cat" onclick="toggleOtherField()"> Kat
+                        </label>
+
+                        <label class="radio-row">
+                            <input type="radio" name="type" value="bird" onclick="toggleOtherField()"> Vogel
+                        </label>
+
+                        <label class="radio-row radio-other">
+                            <input type="radio" name="type" value="other" onclick="toggleOtherField()"> Anders
+                            <input id="otherkind" name="otherkind" placeholder="Wat voor dier..."
+                                class="conditional-input" />
+                        </label>
+                    </fieldset>
+
                     @error('type')
                         <div class="error-message">{{ $message }}</div>
                     @enderror
 
-
-                    <label id="otherlabel" for="otherkind" style="color: gray;">If other is selected, what kind of animal is
-                        it?<span id="animalspan"></span>
-                        <input id="otherkind" name="otherkind" disabled style="color: gray;">
-                    </label>
                     @error('otherkind')
                         <div class="error-message">{{ $message }}</div>
                     @enderror
 
 
-
-                    <label for="breed">What breed is it?<span>*</span>
+                    <label for="breed">Wat voor ras is het dier?<span>*</span>
                         <input id="breed" name="breed" required>
                     </label>
                     @error('breed')
                         <div class="error-message">{{ $message }}</div>
                     @enderror
 
-                    <label for="color">What color is it?<span>*</span>
+                    <label for="color">Welke kleur(en) is het dier?<span>*</span>
                         <input id="color" name="color" required>
                     </label>
                     @error('color')
                         <div class="error-message">{{ $message }}</div>
                     @enderror
 
-                    <label for="gender">What gender is it?<span>*</span>
+                    <label for="gender">Welk geslacht is het?<span>*</span>
                         <select id="gender" name="gender" required>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="ex-male">Ex-Male</option>
-                            <option value="unknown">Cannot Tell</option>
+                            <option value="male">Man</option>
+                            <option value="female">Vrouw</option>
+                            <option value="ex-male">Ex-Man</option>
+                            <option value="unknown">Niet duidelijk</option>
                         </select>
                     </label>
                     @error('gender')
                         <div class="error-message">{{ $message }}</div>
                     @enderror
 
-                    <label for="condition">What condition is it in?<span>*</span>
+                    <label for="condition">Wat voor toestand is het dier in?<span>*</span>
                         <select id="condition" name="condition" required>
-                            <option value="injured">Injured</option>
-                            <option value="sick">Sick</option>
-                            <option value="stray">Stray</option>
-                            <option value="young">Young</option>
-                            <option value="weakened">Weakened</option>
-                            <option value="dead">Dead</option>
-                            <option value="other">Other</option>
+                            <option value="injured">Gewond</option>
+                            <option value="sick">Ziek</option>
+                            <option value="stray">Zwerf</option>
+                            <option value="young">Jong</option>
+                            <option value="weakened">Verzwakt</option>
+                            <option value="dead">Dood</option>
+                            <option value="other">Anders</option>
                         </select>
                     </label>
                     @error('condition')
                         <div class="error-message">{{ $message }}</div>
                     @enderror
 
-                    <label for="chipnumber">What is its chipnumber?
+                    <label for="chipnumber">Wat is het chipnummer van het dier?
                         <input id="chipnumber" name="chipnumber">
                     </label>
                     @error('chipnumber')
@@ -83,21 +92,26 @@
                     @enderror
 
                     <fieldset>
-                        <legend for="registered">Is it registered?<span>*</span></legend>
+                        <legend for="registered">Is het dier geregistreerd?<span>*</span></legend>
                         <div class="radiogroup">
                             <label for="registered_yes"><input id="registered_yes" type="radio" name="registered"
-                                    value="1">Yes</label>
+                                    value="1">Ja</label>
                             <label for="registered_no"><input id="registered_no" type="radio" name="registered"
-                                    value="0">No</label>
+                                    value="0">Nee</label>
                         </div>
                     </fieldset>
                     @error('registered')
                         <div class="error-message">{{ $message }}</div>
                     @enderror
 
+
+
+
+
+
                 </div>
 
-                <button class="btn-login" type="submit">Submit</button>
+                <button class="btn-login" type="submit">Verzenden</button>
 
             </form>
         </div>

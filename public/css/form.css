@@ -75,7 +75,7 @@ input[type="radio"] {
 
 fieldset {
     border: none;
-    margin: 0;
+    margin-bottom: 10px;
     padding: 0;
 }
 
@@ -91,7 +91,6 @@ fieldset {
     cursor: pointer;
     line-height: 1;
 }
-
 
 .remember-me {
     text-align: left;
@@ -123,4 +122,24 @@ fieldset {
     color: red;
     font-size: 0.85rem;
     margin-top: 4px;
+}
+
+.otheranimalinput {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.radio-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    position: relative; /* needed for absolute positioning of the input */
+}
+
+.radio-other .conditional-input {
+    position: absolute;
+    max-width: 200px;
+    left: 90px;
+    top: -12px;
 }

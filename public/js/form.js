@@ -3,24 +3,22 @@ window.addEventListener("load", function () {
     if (form) form.reset();
 });
 
-const kindSelect = document.getElementById("type");
-const otherAnimalInput = document.getElementById("otherkind");
-const otherAnimalText = document.getElementById("otherlabel");
-const otherAnimalSpan = document.getElementById("animalspan");
+function toggleOtherField() {
+    const radios = document.querySelectorAll('input[name="type"]');
+    const otherInput = document.getElementById("otherkind");
 
-kindSelect.addEventListener("change", function () {
-    if (kindSelect.value === "other") {
-        otherAnimalInput.disabled = false;
-        otherAnimalInput.required = true;
-        otherAnimalInput.style.color = "black";
-        otherAnimalText.style.color = "black";
-        otherAnimalSpan.innerHTML = "*";
+    let selected = null;
+    radios.forEach((radio) => {
+        if (radio.checked) {
+            selected = radio.value;
+        }
+    });
+
+    if (selected === "other") {
+        otherInput.disabled = false;
     } else {
-        otherAnimalInput.disabled = true;
-        otherAnimalInput.required = false;
-        otherAnimalInput.value = "";
-        otherAnimalInput.style.color = "gray";
-        otherAnimalText.style.color = "gray";
-        otherAnimalSpan.innerHTML = "";
+        otherInput.disabled = true;
     }
-});
+}
+
+window.addEventListener("DOMContentLoaded", toggleOtherField);
