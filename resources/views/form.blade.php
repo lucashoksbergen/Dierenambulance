@@ -22,7 +22,8 @@
                     </label>
 
 
-                    <label id="otherlabel" for="otherkind" style="color: gray;">If other is selected, what kind of animal is it?
+                    <label id="otherlabel" for="otherkind" style="color: gray;">If other is selected, what kind of animal is
+                        it?<span id="animalspan"></span>
                         <input id="otherkind" name="otherkind" disabled>
                     </label>
 
