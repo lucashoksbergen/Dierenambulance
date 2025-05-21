@@ -8,21 +8,23 @@
         <h2>Welcome back!</h2>
         
         
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login.attempt') }}">
             @csrf
 
             <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                 <label for="email">Email address<span>*</span></label>
                 <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus>
+
                 @error('email')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
+
             </div>
 
             <div class="form-group">
               <label for="password">Password<span>*</span></label>
               <input type="password" id="password" name="password" required>
-          </div>
+            </div>
 
             <div class="remember-me">
                 <label>
@@ -35,7 +37,9 @@
             <div class="forgot-password">
                 <a href="{{ route('password.request') }}">Forgot your password?</a>
             </div>
-            <p>Are you not a volunteir yet? Join us here.</p>
+
+            <p><a href="https://dierenambulancefrl.nl/word-vrijwilliger/">Are you not a volunteer yet? Join us here.</a></p>
+
         </form>
     </div>
 </div>

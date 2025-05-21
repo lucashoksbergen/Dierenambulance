@@ -1,5 +1,5 @@
 .login-container {
-    min-height: 100dvh;
+    min-height: calc(100dvh - 70px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -101,7 +101,8 @@ input[type="password"]:focus {
 }
 
 .error-message {
-    color: red;
+    color: red !important;
+    text-decoration: none !important;
     font-size: 0.85rem;
     margin-top: 4px;
 }
