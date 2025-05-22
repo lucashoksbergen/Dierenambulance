@@ -12,16 +12,17 @@ return new class extends Migration {
     {
         Schema::create('animals', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('owner_id');
-            $table->string('condition');
-            $table->string('type');
+            $table->foreignId('owner_id')->nullable(); // Nullable, because the animal can be a stray
+
+            $table->enum('type', ['dog', 'cat', 'bird', 'other']);
+            $table->string('other_type')->nullable(); // Used if type is 'other'
+
             $table->string('race')->nullable();
-            $table->string('gender');
+            $table->enum('gender', ['male', 'female', 'ex-male', 'unknown']);
             $table->text('description');
-            $table->string('chip_number'); // Probably int instead
+            $table->bigInteger('chip_number'); // Can store up to 19 digits, chip number requires 15
             $table->boolean('registered');
-            $table->string('registered_at');
-            // Do we need a name?
+            $table->string('registered_at'); // place 
             $table->timestamps();
         });
     }

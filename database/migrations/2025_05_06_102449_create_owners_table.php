@@ -10,13 +10,15 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('owner', function (Blueprint $table) {
+        Schema::create('owners', function (Blueprint $table) {
             $table->id();
             $table->string('email');
             $table->integer('phone_number');
-            $table->string('address');
+            $table->string('street');
             $table->integer('house_number');
             $table->string('postal_code');
+            $table->string('city');
+            // Needed for filtering data
             $table->string('municipality');
             $table->timestamps();
         });
@@ -27,6 +29,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('owner');
+        Schema::dropIfExists('owners');
     }
 };

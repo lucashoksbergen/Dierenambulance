@@ -6,21 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 
-class Vehicle extends Model
+class Owner extends Model
 {
-
     use HasFactory, Notifiable;
 
     protected $guarded = [];
 
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
-    }
 
-    public function transfers()
+    public function animals()
     {
-        return $this->hasMany(Transfer::class);
+        return $this->hasMany(Animal::class);
     }
-
 }

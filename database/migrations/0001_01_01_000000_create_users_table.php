@@ -12,14 +12,17 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name'); // Not necessary, but helps with clarity
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('role');
-            $table->string('address');
+
+            // Address fields, might not need all of them
+            $table->string('street');
+            $table->integer('house_number');
             $table->string('postal_code');
             $table->string('city');
+            $table->string('municipality');
             $table->rememberToken();
             $table->timestamps();
         });

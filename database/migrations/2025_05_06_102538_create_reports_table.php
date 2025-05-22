@@ -12,21 +12,21 @@ return new class extends Migration {
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
-            $table->text('date'); // YYYY-MM-DD
-            $table->unsignedBigInteger('vehicle_volunteer_id'); // Linked to Vehicle_Volunteer, id which is linked to driver(s) and a vehicle
-            $table->unsignedBigInteger('call_taker'); // Linked to Volunteer Table, id of the callcenter person
-            $table->string('caller_name');
-            $table->integer('caller_phone_number');
-            $table->text('description')->nullable();
-            $table->string('address'); // Home town/city/etc.
-            $table->integer('house_number');
-            $table->string('postal_code');
-            $table->string('municipality');
-            $table->unsignedBigInteger('animal_id'); // Linked to Animal Table
+            $table->enum('type', ['taxi', 'emergency']);
+            $table->text('date'); // YYYY-MM-DD, date of the report, usefull for taxi rides
+
+            // Using nullOnDelete() to not wipe the report if user or caller entries are deleted, preventing data loss
+            // Linked to the call-center user who took the report
+            $table->foreignId('user_id')->constrained('users')->nullOnDelete();
+            // Linked to the caller who called in for the report
+            $table->foreignId('caller_id')->constrained('callers')->nullOnDelete();
+
+            // Animal information
+            $table->foreignId('animal_id'); // Linked to Animal Table
             $table->text('report_status');
             $table->boolean('rijkswaterstaat_called');
-            $table->unsignedBigInteger('payment_id'); // Linked to Payment table
+
+            $table->foreignId('payment_id'); // Linked to Payment table
             $table->timestamps();
         });
     }
