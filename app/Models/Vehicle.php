@@ -13,21 +13,14 @@ class Vehicle extends Model
 
     protected $guarded = [];
 
-
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_vehicle');
+        return $this->belongsToMany(User::class);
     }
 
-    public function vehicleSwap()
+    public function transfers()
     {
-        return $this->belongsToMany(VehicleSwap::class);
+        return $this->hasMany(Transfer::class);
     }
-
-    public function reports()
-    {
-        return $this->hasMany(Report::class);
-    }
-
 
 }

@@ -16,37 +16,29 @@ class Report extends Model
     protected $guarded = [];
 
 
-    public function user() // Callcenter person
+    public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
-    public function driver() // Callcenter person
+    public function userVehicles()
     {
-        return $this->belongsTo(User::class, 'driver_id');
-    }
-
-    public function codriver() // Callcenter person
-    {
-        return $this->belongsTo(User::class, 'codriver_id');
-    }
-
-    public function vehicle()
-    {
-        return $this->belongsTo(Vehicle::class, 'vehicle_id');
-    }
-
-    public function animal()
-    {
-        return $this->belongsTo(Animal::class, 'animal_id');
+        return $this->belongsToMany(UserVehicle::class, 'report_user_vehicle', 'report_id', 'user_vehicle_id');
     }
 
     public function payment()
     {
-        return $this->hasOne(Payment::class, 'payment_id');
+        return $this->hasOne(Payment::class);
     }
 
+    public function animal()
+    {
+        return $this->belongsTo(Animal::class);
+    }
 
-
+    public function caller()
+    {
+        return $this->belongsTo(Caller::class);
+    }
 
 }

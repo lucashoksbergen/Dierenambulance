@@ -12,31 +12,20 @@ return new class extends Migration {
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
-            $table->text('date'); // YYYY-MM-DD
+            $table->enum('type', ['taxi', 'emergency']);
+            $table->text('date'); // YYYY-MM-DD, date of the report, usefull for taxi rides
 
-            // Linked to the user who took the report
-            $table->foreignId('user_id');
-
-            // Linked to information of driver(s) and vehicle that will be sent to the report
-            $table->foreignId('driver_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('codriver_id')->nullable()->constrained('users')->cascadeOnDelete();
-            $table->foreignId('vehicle_id')->constrained()->cascadeOnDelete();
-
-            // Caller information
-            $table->string('caller_name');
-            $table->integer('caller_phone_number');
-            $table->text('description')->nullable();
-            $table->string('street_name');
-            $table->integer('house_number');
-            $table->string('postal_code');
-            $table->string('city'); // Home town/city/etc.
-            $table->string('municipality');
+            // Using nullOnDelete() to not wipe the report if user or caller entries are deleted, preventing data loss
+            // Linked to the call-center user who took the report
+            $table->foreignId('user_id')->constrained('users')->nullOnDelete();
+            // Linked to the caller who called in for the report
+            $table->foreignId('caller_id')->constrained('callers')->nullOnDelete();
 
             // Animal information
             $table->foreignId('animal_id'); // Linked to Animal Table
             $table->text('report_status');
             $table->boolean('rijkswaterstaat_called');
+
             $table->foreignId('payment_id'); // Linked to Payment table
             $table->timestamps();
         });

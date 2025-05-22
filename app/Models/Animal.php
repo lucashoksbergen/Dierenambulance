@@ -23,4 +23,9 @@ class Animal extends Model
     {
         return $this->belongsTo(Owner::class);
     }
+
+    public function conditions()
+    {
+        return $this->belongsToMany(Condition::class);
+    }
 }

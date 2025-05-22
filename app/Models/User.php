@@ -18,11 +18,6 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    // protected $fillable = [
-    //     'name',
-    //     'email',
-    //     'password',
-    // ];
 
     protected $guarded = [];
 
@@ -49,22 +44,19 @@ class User extends Authenticatable
         ];
     }
 
-    protected function callReports()
+    public function roles()
     {
-        return $this->hasMany(Report::class, 'user_id');
+        return $this->belongsToMany(Role::class);
     }
 
-    protected function drivingReports()
+    public function vehicles()
     {
-        return $this->hasMany(Report::class, 'driver_id');
+        return $this->belongsToMany(Vehicle::class);
     }
 
-    protected function codrivingReports()
+    public function reports()
     {
-        return $this->hasMany(Report::class, 'codriver_id');
+        return $this->hasMany(Report::class);
     }
-
-
-
 
 }
