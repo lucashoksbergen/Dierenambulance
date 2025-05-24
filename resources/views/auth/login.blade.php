@@ -8,7 +8,7 @@
         <h2>Welcome back!</h2>
         
         
-        <form method="POST" action="">
+        <form method="POST" action="{{ route('login') }}">
             @csrf
 
             <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
@@ -40,7 +40,16 @@
 
             <p><a href="https://dierenambulancefrl.nl/word-vrijwilliger/">Are you not a volunteer yet? Join us here.</a></p>
 
+            @if ($errors->any())
+             <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="error-message">{{ $error }}</li>
+                @endforeach
+             </ul>
+            @endif
+
         </form>
+
     </div>
 </div>
 @endsection
