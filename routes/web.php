@@ -2,10 +2,21 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
+    // If the user is authenticated, redirect to the dashboard
+    if (Auth::check()) {
+        return redirect()->route('dashboard');
+    }
+    // If not authenticated, redirect to the home page
+    return view('welcome'); 
+});
+
+// Home route
+Route::get('/home', function () {
     return view('welcome');
-})->name('home'); 
+})->name('home');
 
 // Authentication routes
 Route::get('/login',[AuthController::class, 'showLogin'] )->name('show.login');
