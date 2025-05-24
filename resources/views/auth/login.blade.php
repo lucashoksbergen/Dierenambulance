@@ -8,7 +8,7 @@
         <h2>Welcome back!</h2>
         
         
-        <form method="POST" action="{{ route('login.attempt') }}">
+        <form method="POST" action="">
             @csrf
 
             <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
