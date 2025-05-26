@@ -109,6 +109,14 @@ select {
     font-size: inherit; /* Use parent font size */
 }
 
+/* Reset button styles */
+/* Removes all default styles from button elements, allowing developers to style them from scratch.
+         This includes removing background, border, padding, and other browser-specific styles. */
+button {
+    all: unset; /* Resets all styles to default */
+    cursor: pointer; /* Ensures the button has a pointer cursor */
+}
+
 /* Ensure reasonable height for textareas */
 /* Sets a minimum height for `<textarea>` elements that don't have the `rows` attribute,
          preventing them from being too small. */
@@ -227,3 +235,10 @@ html {
 }
 
 /* ---------------------------------- */
+/* BUTTONS */
+.btn {
+    font-family: var(--font-family-primary);
+    color: var(--color-white);
+    background-color: var(--color-secondary);
+    text-decoration: none;
+}

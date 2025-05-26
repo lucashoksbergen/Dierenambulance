@@ -1,10 +1,44 @@
 nav {
     background-color: var(--color-primary);
     height: 70px;
+    max-height: 70px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 20px 24px 20px 0px;
 }
 nav .logo {
+    overflow: hidden;
+    height: 70px;
+    padding: 0px 20px;
+    background-color: #fff;
+}
+nav .logo img {
+    height: 90px;
+    object-fit: cover;
+    object-position: center;
+}
+.btn-logout {
+    font-size: 14px;
+    color: var(--color-black);
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    font-family: var(--font-family-primary);
+    background-color: none;
+    cursor: pointer;
+}
+.btn-login {
+    font-size: 14px;
+    font-weight: 600;
+    font-family: var(--font-family-primary);
     color: var(--color-white);
+    text-decoration: none;
+    background-color: var(--color-secondary);
+    padding: 8px 16px;
+    border-radius: 7px;
+    transition: background-color 0.3s ease;
+}
+.btn-login:hover {
+    background-color: var(--color-secondary-110);
 }
