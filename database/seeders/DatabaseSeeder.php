@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Animal;
 use App\Models\Payment;
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Report;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -19,27 +20,21 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        User::factory(10)->create();
-        Vehicle::factory(3)->create();
+        // Creates users, roles and fills their pivot table with random entries
+        DB::table('role_user')->truncate();
 
-        Report::factory(10)->create(function () {
-            return [
-                'user_id' => User::inRandomOrder()->value('id'),
-                // No duplicate protection between driver/codriver yet.
-                'driver_id' => User::inRandomOrder()->value('id'),
-                'codriver_id' => User::inRandomOrder()->value('id'),
-                'vehicle_id' => Vehicle::inRandomOrder()->value('id'),
-                'animal_id' => Animal::factory(),
-                'payment_id' => Payment::factory(),
-            ];
+        // Creates the roles
+        $this->call([
+            RoleSeeder::class
+        ]);
+
+        User::factory(10)->create()->each(function (User $user) {
+            $randomRoles = Role::inRandomOrder()->take(rand(1, 3))->pluck('id');
+            $user->roles()->attach($randomRoles);
         });
 
-        DB::table('vehicle_swap')->insert([
-            'user_vehicle_old' => Vehicle::inRandomOrder()->value('id'),
-            'user_vehicle_new' => Vehicle::inRandomOrder()->value('id'),
-            'materials_check' => true,
-            'cash' => fake()->numberBetween(0, 1000),
-        ]);
+        // Creates vehicles
+        Vehicle::factory(5)->create();
 
     }
 }

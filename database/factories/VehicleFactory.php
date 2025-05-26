@@ -17,8 +17,7 @@ class VehicleFactory extends Factory
     public function definition(): array
     {
         return [
-            'license_plate' => fake()->creditCardNumber(),
-            'materials' => fake()->emoji(),
+            'license_plate' => strtoupper(fake()->bothify('##-??-##')),
         ];
     }
 }
