@@ -5,7 +5,7 @@
 @section('content')
     <div class="form-container">
         <div class="login-card">
-            <h2>Please fill in the Form about the found Animal.</h2>
+            <h2>Vul het formulier in alstublieft.</h2>
 
             <form method="POST" action="{{ route('form.submit') }}">
                 @csrf
@@ -76,7 +76,7 @@
                             <option value="stray">Zwerf</option>
                             <option value="young">Jong</option>
                             <option value="weakened">Verzwakt</option>
-                            <option value="dead">Dood</option>
+                            <option value="dead">Overleden</option>
                             <option value="other">Anders</option>
                         </select>
                     </label>
