@@ -17,7 +17,6 @@ class PaymentFactory extends Factory
     public function definition(): array
     {
         return [
-            'payed' =>true,
             'amount' => fake()->numberBetween(0, 1000),
             'payment_method' => fake()->randomElement(['cash', 'bank', 'tikkie', 'invoice']),
         ];

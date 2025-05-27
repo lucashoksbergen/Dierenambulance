@@ -2,23 +2,23 @@
 
 namespace Database\Seeders;
 
-use App\Models\Role;
+use App\Models\Condition;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class RoleSeeder extends Seeder
+class ConditionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $roles = ['driver', 'callcenter', 'admin'];
+        $conditions = ['sick', 'stray', 'dead', 'young', 'weakened', 'injured', 'other'];
 
-        foreach ($roles as $role) {
-            Role::firstOrCreate(
+        foreach ($conditions as $condition) {
+            Condition::firstOrCreate(
                 [
-                    'name' => $role
+                    'name' => $condition
                 ],
             );
         }

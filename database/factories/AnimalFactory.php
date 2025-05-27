@@ -18,11 +18,11 @@ class AnimalFactory extends Factory
     public function definition(): array
     {
         return [
-            'owner_id' => Owner::factory(),
-            'condition' => fake()->randomElement(['hurt', 'healthy', 'sick', 'dead', 'stray', 'young', 'unknown']),
+            'owner_id' => null, // Is set in seeder, is also nullable
             'type' => fake()->randomElement(['dog', 'cat', 'bird', 'other']),
-            'race' => fake()->word(),
-            'gender' => fake()->randomElement(['male', 'female', 'neutered', 'unknown']),
+            'other_type' => fake()->optional()->word(), // Used if type is 'other'
+            'breed' => fake()->word(),
+            'gender' => fake()->randomElement(['male', 'female', 'ex-male', 'unknown']),
             'description' => fake()->sentence(),
             'chip_number' => fake()->unique()->numberBetween(1000000000, 9999999999),
             'registered' => fake()->boolean(),

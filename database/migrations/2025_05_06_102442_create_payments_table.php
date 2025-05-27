@@ -12,11 +12,9 @@ return new class extends Migration {
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->boolean('payed');
             $table->string('amount');
             $table->string('payment_method');
             $table->timestamps();
-
         });
     }
 

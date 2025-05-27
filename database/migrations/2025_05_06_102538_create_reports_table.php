@@ -15,18 +15,14 @@ return new class extends Migration {
             $table->enum('type', ['taxi', 'emergency']);
             $table->text('date'); // YYYY-MM-DD, date of the report, usefull for taxi rides
 
-            // Using nullOnDelete() to not wipe the report if user or caller entries are deleted, preventing data loss
-            // Linked to the call-center user who took the report
-            $table->foreignId('user_id')->constrained('users')->nullOnDelete();
-            // Linked to the caller who called in for the report
-            $table->foreignId('caller_id')->constrained('callers')->nullOnDelete();
-
-            // Animal information
-            $table->foreignId('animal_id'); // Linked to Animal Table
             $table->text('report_status');
             $table->boolean('rijkswaterstaat_called');
 
-            $table->foreignId('payment_id'); // Linked to Payment table
+            // Using nullOnDelete() to not wipe the report if user or caller entries are deleted, preventing data loss
+            $table->foreignId('user_id')->constrained('users')->nullOnDelete(); // Linked to callcenter user who took up the report
+            $table->foreignId('caller_id')->constrained('callers')->nullOnDelete();
+            $table->foreignId('animal_id');
+            $table->foreignId('payment_id');
             $table->timestamps();
         });
     }

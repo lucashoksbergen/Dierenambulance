@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserVehicle extends Model
 {
+
+    protected $table = 'user_vehicle';
+
     public function transfersAsOld()
     {
         return $this->belongsToMany(Transfer::class, 'transfer_old_user_vehicle', 'user_vehicle_id', 'transfer_id');
@@ -30,5 +33,5 @@ class UserVehicle extends Model
     {
         return $this->belongsTo(Vehicle::class);
     }
-    
+
 }
