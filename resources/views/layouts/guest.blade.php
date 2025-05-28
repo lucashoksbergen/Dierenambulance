@@ -18,19 +18,32 @@
 
   <!-- Global Styles -->
   <link rel="stylesheet" href="{{ asset('css/globals.css') }}"> 
-  <link rel="stylesheet" href="{{ asset('css/nav-bar.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/layout-guest.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
   
   <style> 
     @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
   </style>
+
   <!-- Additional page-specific styles -->
   @stack('styles')
 
 </head>
+
 <body>
   <!-- Navigation Component -->
-  <x-nav-bar></x-nav-bar>
+  <nav style="background-color: #1f573a" > 
+
+ 
+
+   <div class="logo"><img src="{{ asset('assets/img/LogoDAFRL-350x224-pub.jpg') }}" alt="" srcset=""></div>
+    <a href="{{ route('show.login') }}" class="btn-login">Login In</a>
+
+  </nav>
+
+
+
 
   <!-- Main Content Area -->
   <main>
@@ -38,10 +51,18 @@
   </main>
 
   <!-- Footer -->
-
+  <x-footer></x-footer>
   <!-- Global Scripts -->
   <script src="{{ asset('js/global.js') }}"></script>
   
+  <script>
+    const sideBar = document.getElementById('sidebar');
+
+    function toggleSidebar(){
+      sideBar.classList.toggle('show');
+    }
+  </script>
+
   <!-- Additional page-specific scripts -->
   @stack('scripts')
 </body>

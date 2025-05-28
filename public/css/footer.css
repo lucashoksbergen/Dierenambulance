@@ -1,0 +1,15 @@
+footer {
+    background-color: var(--color-primary-180);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+}
+footer .footer-content {
+    text-align: center;
+}
+footer .footer-content p {
+    color: var(--color-white);
+    font-family: var(--font-family-secondary);
+    font-size: 12px;
+}

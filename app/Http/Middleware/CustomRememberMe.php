@@ -29,7 +29,7 @@ class CustomRememberMe
                 $customCookie = Cookie::make(
                     $cookieName,
                     $cookieValue,
-                    60 * 24 * 3 // 3 days in minutes
+                    60 * 24 // 1 day in minutes
                 );
 
                 $response->headers->setCookie($customCookie);

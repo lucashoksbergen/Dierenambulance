@@ -70,7 +70,7 @@ input[type="password"]:focus {
     font-size: 0.95rem;
 }
 
-.btn-login {
+.btn-login-form {
     width: 100%;
     padding: 12px;
     background-color: var(--color-secondary);
@@ -83,7 +83,7 @@ input[type="password"]:focus {
     margin-bottom: 16px;
 }
 
-.btn-login:hover {
+.btn-login-form:hover {
     background-color: var(--color-secondary);
 }
 

@@ -1,4 +1,8 @@
-@extends('layout')
+@php
+    $layout = auth()->check() ? 'layouts.app' : 'layouts.guest';
+@endphp
+
+@extends($layout)
 
 @section('title', 'DierenAmbulance - Login')
 
@@ -32,7 +36,7 @@
                 </label>
             </div>
 
-            <button class="btn-login" type="submit">Sign in</button>
+            <button class="btn-login-form" type="submit">Sign in</button>
 
             <div class="forgot-password">
                 <a href="{{ route('password.request') }}">Forgot your password?</a>
