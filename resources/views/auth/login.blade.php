@@ -1,4 +1,8 @@
-@extends('layout')
+@php
+    $layout = auth()->check() ? 'layouts.app' : 'layouts.guest';
+@endphp
+
+@extends($layout)
 
 @section('title', 'DierenAmbulance - Login')
 

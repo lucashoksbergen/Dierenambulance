@@ -42,3 +42,6 @@ nav .logo img {
 .btn-login:hover {
     background-color: var(--color-secondary-110);
 }
+main {
+    min-height: calc(100dvh - 70px);
+}

@@ -14,6 +14,10 @@ Route::get('/', function () {
     return view('welcome'); 
 });
 
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
+
 // Home route
 Route::get('/home', function () {
     return view('welcome');
