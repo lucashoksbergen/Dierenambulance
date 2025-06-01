@@ -19,8 +19,8 @@ class AnimalFactory extends Factory
     {
         return [
             'owner_id' => null, // Is set in seeder, is also nullable
-            'type' => fake()->randomElement(['dog', 'cat', 'bird', 'other']),
-            'other_type' => fake()->optional()->word(), // Used if type is 'other'
+            'type' => $type = fake()->randomElement(['dog', 'cat', 'bird', 'other']),
+            'other_type' => $type === 'other' ? fake()->word() : null, // Only needs a value if 'type' is set to 'other'
             'breed' => fake()->word(),
             'gender' => fake()->randomElement(['male', 'female', 'ex-male', 'unknown']),
             'description' => fake()->sentence(),
