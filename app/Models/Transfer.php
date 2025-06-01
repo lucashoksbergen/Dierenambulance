@@ -2,16 +2,22 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Transfer extends Model
 {
+    use HasFactory;
+
+    protected $guarded = [];
+
+
     public function vehicle()
     {
         return $this->belongsTo(Vehicle::class);
     }
 
-    public function oldUserVehicles() 
+    public function oldUserVehicles()
     {
         return $this->belongsToMany(UserVehicle::class, 'transfer_old_user_vehicle', 'transfer_id', 'user_vehicle_id');
     }

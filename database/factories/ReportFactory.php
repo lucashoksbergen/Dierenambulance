@@ -2,6 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Animal;
+use App\Models\Caller;
+use App\Models\Payment;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,18 +22,17 @@ class ReportFactory extends Factory
     {
         return [
             // Does not set the other ids used in this, this does occur in the seeder
-            'type' => fake()->randomElement(['dog', 'cat', 'bird', 'other']),
+            'type' => fake()->randomElement(['taxi', 'emergency']),
             'date' => fake()->date(),
-            'caller_name' => fake()->name(),
-            'caller_phone_number' => fake()->phoneNumber(),
-            'description' => fake()->text(),
-            'street_name' => fake()->streetName(),
-            'house_number' => fake()->numberBetween(1, 100),
-            'postal_code' => fake()->postcode(),
-            'city' => fake()->city(),
-            'municipality' => fake()->city(),
+
             'report_status' => fake()->randomElement(['open', 'closed']),
             'rijkswaterstaat_called' => fake()->boolean(),
+
+            'user_id' => User::pluck('id')->random(),
+            'caller_id' => Caller::pluck('id')->random(),
+            'animal_id' => Animal::pluck('id')->random(),
+            'payment_id' => Payment::pluck('id')->random(),
+
             'created_at' => now(),
             'updated_at' => now(),
 

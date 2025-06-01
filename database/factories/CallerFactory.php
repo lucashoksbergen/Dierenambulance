@@ -17,7 +17,15 @@ class CallerFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'caller_name' => fake()->name(),
+            'caller_phone_number' => fake()->phoneNumber(),
+            'street_name' => fake()->streetName(),
+            'house_number' => fake()->numberBetween(1, 1000),
+            'postal_code' => fake()->postcode(),
+            'city' => fake()->city(),
+            'municipality' => fake()->city(), // Needed for filtering data
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

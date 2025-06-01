@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->enum('type', ['dog', 'cat', 'bird', 'other']);
             $table->string('other_type')->nullable(); // Used if type is 'other'
 
-            $table->string('race')->nullable();
+            $table->string('breed')->nullable();
             $table->enum('gender', ['male', 'female', 'ex-male', 'unknown']);
             $table->text('description');
             $table->bigInteger('chip_number'); // Can store up to 19 digits, chip number requires 15
