@@ -17,5 +17,28 @@ class UserSeeder extends Seeder
             $randomRoles = Role::inRandomOrder()->take(rand(1, 3))->pluck('id');
             $user->roles()->attach($randomRoles);
         });
+
+
+
+
+        // DELETE THIS LATER, ONLY FOR TESTING PURPOSES
+
+        $testUser = User::factory()->create([
+            'name' => 'test',
+            'email' => 'test@test.com',
+            'password' => bcrypt('password'),
+            'street' => 'teststreet',
+            'house_number' => '1',
+            'postal_code' => '1234AB',
+            'city' => 'testcity',
+            'municipality' => 'testmunicipality',
+            'remember_token' => null,
+        ]);
+        // Gives the test user all the roles in the role_user pivot table
+        $testUser->roles()->syncWithoutDetaching([
+            Role::where('name', 'driver')->first()->id,
+            Role::where('name', 'callcenter')->first()->id,
+            Role::where('name', 'admin')->first()->id,
+        ]);
     }
 }
