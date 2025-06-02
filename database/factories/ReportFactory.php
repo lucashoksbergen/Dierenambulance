@@ -25,7 +25,7 @@ class ReportFactory extends Factory
             'type' => fake()->randomElement(['taxi', 'emergency']),
             'date' => fake()->date(),
 
-            'report_status' => fake()->randomElement(['open', 'closed']),
+            'report_status' => fake()->randomElement(['open', 'closed', 'in_progress']),
 
             'street_name' => fake()->streetName(),
             'house_number' => fake()->numberBetween(1, 1000),

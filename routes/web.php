@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\CustomRememberMe;
@@ -11,7 +12,7 @@ Route::get('/', function () {
         return redirect()->route('dashboard');
     }
     // If not authenticated, redirect to the home page
-    return view('welcome'); 
+    return view('welcome');
 });
 
 Route::get('/welcome', function () {
@@ -24,19 +25,19 @@ Route::get('/home', function () {
 })->name('home');
 
 // Authentication routes
-Route::get('/login',[AuthController::class, 'showLogin'] )->name('show.login');
-Route::post('/login',[AuthController::class, 'login'] ) ->middleware(CustomRememberMe::class)->name('login'); // Custom middleware to handle remember me functionality
-Route::post('/logout',[AuthController::class, 'logout'] )->name('logout');
+Route::get('/login', [AuthController::class, 'showLogin'])->name('show.login');
+Route::post('/login', [AuthController::class, 'login'])->middleware(CustomRememberMe::class)->name('login'); // Custom middleware to handle remember me functionality
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //Protected routes
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
 
     // Protected routes go here
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    // })->name('dashboard');
+    Route::get('/dashboard', [ReportController::class, 'index'])->name('dashboard');
 
 });
 
@@ -48,3 +49,4 @@ Route::get('/password/reset', function () {
 })->name('password.request');
 
 //END TESTING ----------------
+
