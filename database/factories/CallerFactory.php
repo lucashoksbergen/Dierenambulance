@@ -23,7 +23,7 @@ class CallerFactory extends Factory
             'house_number' => fake()->numberBetween(1, 1000),
             'postal_code' => fake()->postcode(),
             'city' => fake()->city(),
-            'municipality' => fake()->city(), // Needed for filtering data
+            'municipality' => fake()->city(),
             'created_at' => now(),
             'updated_at' => now(),
         ];

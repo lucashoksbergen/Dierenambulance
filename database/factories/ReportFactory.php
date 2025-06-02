@@ -26,6 +26,13 @@ class ReportFactory extends Factory
             'date' => fake()->date(),
 
             'report_status' => fake()->randomElement(['open', 'closed']),
+
+            'street_name' => fake()->streetName(),
+            'house_number' => fake()->numberBetween(1, 1000),
+            'postal_code' => fake()->postcode(),
+            'city' => fake()->city(),
+            'municipality' => fake()->city(),
+
             'rijkswaterstaat_called' => fake()->boolean(),
 
             'user_id' => User::pluck('id')->random(),
