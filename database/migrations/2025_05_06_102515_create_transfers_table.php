@@ -14,7 +14,10 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('vehicle_id')->constrained('vehicles')->cascadeOnDelete();
             $table->boolean('materials_check');
-            $table->integer('cash');
+            $table->integer('cash_before');
+            $table->integer('cash_after');
+            $table->integer('km_start');
+            $table->integer('km_end');
             $table->timestamps();
 
         });

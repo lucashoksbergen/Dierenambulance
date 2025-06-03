@@ -20,7 +20,10 @@ class TransferFactory extends Factory
         return [
             'vehicle_id' => Vehicle::pluck('id')->random(),
             'materials_check' => fake()->boolean(),
-            'cash' => fake()->numberBetween(0, 1000),
+            'cash_before' => $cash = fake()->numberBetween(0, 1000),
+            'cash_after' => $cash,
+            'km_start' => fake()->numberBetween(0, 10000),
+            'km_end' => fake()->numberBetween(0, 10000),
         ];
     }
 }
