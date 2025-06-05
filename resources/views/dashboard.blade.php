@@ -12,7 +12,7 @@
 
 @push('styles')
   <!-- Page-specific CSS -->
-  <!-- <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}"> -->
+  <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 @endpush
 
 @push('scripts')

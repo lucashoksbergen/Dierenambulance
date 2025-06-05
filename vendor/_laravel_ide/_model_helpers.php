@@ -9,13 +9,13 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property string $registered_at
      * @property bool $registered
-     * @property string $chip_number
+     * @property int $chip_number
      * @property string $description
      * @property string $gender
-     * @property string|null $race
+     * @property string|null $breed
+     * @property string|null $other_type
      * @property string $type
-     * @property string $condition
-     * @property int $owner_id
+     * @property int|null $owner_id
      * @property int $id
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Report> $reports
      * @property-read int|null $reports_count
@@ -26,9 +26,9 @@ namespace App\Models {
      * @property-read int|null $notifications_count
      * @method static \Illuminate\Database\Eloquent\Builder<Animal>|Animal whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Animal>|Animal whereOwnerId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Animal>|Animal whereCondition($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Animal>|Animal whereType($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Animal>|Animal whereRace($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Animal>|Animal whereOtherType($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Animal>|Animal whereBreed($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Animal>|Animal whereGender($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Animal>|Animal whereDescription($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Animal>|Animal whereChipNumber($value)
@@ -334,8 +334,28 @@ namespace App\Models {
     /**
      * App\Models\Caller
      *
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property string $municipality
+     * @property string $city
+     * @property string $postal_code
+     * @property int $house_number
+     * @property string $street_name
+     * @property int $caller_phone_number
+     * @property string $caller_name
+     * @property int $id
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Report> $reports
      * @property-read int|null $reports_count
+     * @method static \Illuminate\Database\Eloquent\Builder<Caller>|Caller whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Caller>|Caller whereCallerName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Caller>|Caller whereCallerPhoneNumber($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Caller>|Caller whereStreetName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Caller>|Caller whereHouseNumber($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Caller>|Caller wherePostalCode($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Caller>|Caller whereCity($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Caller>|Caller whereMunicipality($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Caller>|Caller whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Caller>|Caller whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Caller>|Caller newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Caller>|Caller newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Caller>|Caller query()
@@ -634,8 +654,16 @@ namespace App\Models {
     /**
      * App\Models\Condition
      *
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property string $name
+     * @property int $id
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Animal> $animals
      * @property-read int|null $animals_count
+     * @method static \Illuminate\Database\Eloquent\Builder<Condition>|Condition whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Condition>|Condition whereName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Condition>|Condition whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Condition>|Condition whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Condition>|Condition newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Condition>|Condition newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Condition>|Condition query()
@@ -934,10 +962,30 @@ namespace App\Models {
     /**
      * App\Models\Owner
      *
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property string $municipality
+     * @property string $city
+     * @property string $postal_code
+     * @property int $house_number
+     * @property string $street
+     * @property int $phone_number
+     * @property string $email
+     * @property int $id
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Animal> $animals
      * @property-read int|null $animals_count
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
      * @property-read int|null $notifications_count
+     * @method static \Illuminate\Database\Eloquent\Builder<Owner>|Owner whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Owner>|Owner whereEmail($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Owner>|Owner wherePhoneNumber($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Owner>|Owner whereStreet($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Owner>|Owner whereHouseNumber($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Owner>|Owner wherePostalCode($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Owner>|Owner whereCity($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Owner>|Owner whereMunicipality($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Owner>|Owner whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Owner>|Owner whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Owner>|Owner newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Owner>|Owner newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Owner>|Owner query()
@@ -1240,13 +1288,11 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property string $payment_method
      * @property string $amount
-     * @property bool $payed
      * @property int $id
      * @property-read \App\Models\Report $report
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
      * @property-read int|null $notifications_count
      * @method static \Illuminate\Database\Eloquent\Builder<Payment>|Payment whereId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Payment>|Payment wherePayed($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Payment>|Payment whereAmount($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Payment>|Payment wherePaymentMethod($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Payment>|Payment whereCreatedAt($value)
@@ -1552,18 +1598,16 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property int $payment_id
-     * @property bool $rijkswaterstaat_called
-     * @property string $report_status
      * @property int $animal_id
+     * @property int $caller_id
+     * @property int $user_id
+     * @property bool $rijkswaterstaat_called
      * @property string $municipality
+     * @property string $city
      * @property string $postal_code
      * @property int $house_number
-     * @property string $address
-     * @property string|null $description
-     * @property int $caller_phone_number
-     * @property string $caller_name
-     * @property int $call_taker
-     * @property int $vehicle_volunteer_id
+     * @property string $street_name
+     * @property string $report_status
      * @property string $date
      * @property string $type
      * @property int $id
@@ -1578,18 +1622,16 @@ namespace App\Models {
      * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereType($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereDate($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereVehicleVolunteerId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereCallTaker($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereCallerName($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereCallerPhoneNumber($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereDescription($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereAddress($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereReportStatus($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereStreetName($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereHouseNumber($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report wherePostalCode($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereCity($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereMunicipality($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereAnimalId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereReportStatus($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereRijkswaterstaatCalled($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereUserId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereCallerId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereAnimalId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report wherePaymentId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Report>|Report whereUpdatedAt($value)
@@ -1891,8 +1933,16 @@ namespace App\Models {
     /**
      * App\Models\Role
      *
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property string $name
+     * @property int $id
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
      * @property-read int|null $users_count
+     * @method static \Illuminate\Database\Eloquent\Builder<Role>|Role whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Role>|Role whereName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Role>|Role whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Role>|Role whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Role>|Role newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Role>|Role newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Role>|Role query()
@@ -2191,11 +2241,23 @@ namespace App\Models {
     /**
      * App\Models\Transfer
      *
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property int $cash
+     * @property bool $materials_check
+     * @property int $vehicle_id
+     * @property int $id
      * @property-read \App\Models\Vehicle $vehicle
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserVehicle> $oldUserVehicles
      * @property-read int|null $oldUserVehicles_count
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserVehicle> $newUserVehicles
      * @property-read int|null $newUserVehicles_count
+     * @method static \Illuminate\Database\Eloquent\Builder<Transfer>|Transfer whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Transfer>|Transfer whereVehicleId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Transfer>|Transfer whereMaterialsCheck($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Transfer>|Transfer whereCash($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Transfer>|Transfer whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Transfer>|Transfer whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Transfer>|Transfer newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Transfer>|Transfer newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Transfer>|Transfer query()
@@ -2497,6 +2559,11 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property string|null $remember_token
+     * @property string $municipality
+     * @property string $city
+     * @property string $postal_code
+     * @property int $house_number
+     * @property string $street
      * @property string $password
      * @property \Illuminate\Support\Carbon|null $email_verified_at
      * @property string $email
@@ -2515,6 +2582,11 @@ namespace App\Models {
      * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereEmail($value)
      * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereEmailVerifiedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<User>|User wherePassword($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereStreet($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereHouseNumber($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<User>|User wherePostalCode($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereCity($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereMunicipality($value)
      * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereRememberToken($value)
      * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereUpdatedAt($value)
@@ -2816,6 +2888,12 @@ namespace App\Models {
     /**
      * App\Models\UserVehicle
      *
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property int $vehicle_id
+     * @property string $role
+     * @property int $user_id
+     * @property int $id
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Transfer> $transfersAsOld
      * @property-read int|null $transfersAsOld_count
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Transfer> $transfersAsNew
@@ -2824,6 +2902,12 @@ namespace App\Models {
      * @property-read int|null $report_count
      * @property-read \App\Models\User $user
      * @property-read \App\Models\Vehicle $vehicle
+     * @method static \Illuminate\Database\Eloquent\Builder<UserVehicle>|UserVehicle whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<UserVehicle>|UserVehicle whereUserId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<UserVehicle>|UserVehicle whereRole($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<UserVehicle>|UserVehicle whereVehicleId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<UserVehicle>|UserVehicle whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<UserVehicle>|UserVehicle whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<UserVehicle>|UserVehicle newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<UserVehicle>|UserVehicle newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<UserVehicle>|UserVehicle query()
@@ -3124,7 +3208,6 @@ namespace App\Models {
      *
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
-     * @property string $materials
      * @property string $license_plate
      * @property int $id
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
@@ -3135,7 +3218,6 @@ namespace App\Models {
      * @property-read int|null $notifications_count
      * @method static \Illuminate\Database\Eloquent\Builder<Vehicle>|Vehicle whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Vehicle>|Vehicle whereLicensePlate($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Vehicle>|Vehicle whereMaterials($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Vehicle>|Vehicle whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Vehicle>|Vehicle whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Vehicle>|Vehicle newModelQuery()
