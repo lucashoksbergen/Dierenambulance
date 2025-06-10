@@ -30,7 +30,7 @@ class AuthController extends Controller
             // Authentication passed, regenerate the session
             $request->session()->regenerate(); 
             // Redirect to the home page
-            return redirect()->route('home');
+            return redirect()->route('dashboard');
         }
 
         // If authentication fails, throw a validation exception

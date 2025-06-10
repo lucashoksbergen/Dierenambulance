@@ -11,6 +11,8 @@ class UserVehicleSeeder extends Seeder
 {
     public function run(): void
     {
+        UserVehicle::truncate();
+
         $vehicles = Vehicle::all();
         $drivers = User::whereHas('roles', function ($query) {
             $query->where('name', 'driver');

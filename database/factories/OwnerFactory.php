@@ -21,7 +21,7 @@ class OwnerFactory extends Factory
             'phone_number' => fake()->unique()->phoneNumber(),
             'street' => fake()->streetName(),
             'house_number' => fake()->numberBetween(1, 100),
-            'postal_code' => fake()->postcode(),
+            'postal_code' => strtoupper(fake()->bothify('####-??')),
             'city' => fake()->city(),
             'municipality' => fake()->city(),
         ];

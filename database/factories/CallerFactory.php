@@ -21,7 +21,7 @@ class CallerFactory extends Factory
             'caller_phone_number' => fake()->phoneNumber(),
             'street_name' => fake()->streetName(),
             'house_number' => fake()->numberBetween(1, 1000),
-            'postal_code' => fake()->postcode(),
+            'postal_code' => strtoupper(fake()->bothify('####-??')),
             'city' => fake()->city(),
             'municipality' => fake()->city(),
             'created_at' => now(),

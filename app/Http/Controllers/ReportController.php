@@ -9,6 +9,15 @@ class ReportController extends Controller
 {
     public function index(Request $request)
     {
+
+        // Display the dashboard with reports
+        // Show all if user is call-center employee
+        // Show those that are assigned to the user if user is a driver
+        // Filter reports based on filter form filled in data, within above 'filter' of user type
+        // Refresh page and show new results 
+        // OR Instantly show updated results when filter form is filled in and submitted
+
+
         $query = Report::query();
         // Municipality
         if ($request->filled('municipality')) {

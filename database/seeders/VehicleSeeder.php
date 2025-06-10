@@ -10,6 +10,8 @@ class VehicleSeeder extends Seeder
 {
     public function run(): void
     {
+        Vehicle::truncate();
+
         Vehicle::factory(5)->create();
     }
 }

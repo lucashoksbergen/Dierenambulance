@@ -9,6 +9,8 @@ class TransferSeeder extends Seeder
 {
     public function run(): void
     {
+        Transfer::truncate();
+
         Transfer::factory()->count(10)->create();
     }
 }

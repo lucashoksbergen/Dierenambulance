@@ -8,10 +8,11 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Creates roles, happens before users
         $this->call([
+                // These two are essential for the DB to work properly
             RoleSeeder::class,
             ConditionSeeder::class,
+            
                 // Filling the tables with fake data, order is essential here
             UserSeeder::class,
             VehicleSeeder::class,

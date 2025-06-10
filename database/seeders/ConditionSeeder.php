@@ -11,6 +11,7 @@ class ConditionSeeder extends Seeder
     public function run(): void
     {
 
+        Condition::truncate();
         $conditions = ['sick', 'stray', 'dead', 'young', 'weakened', 'injured', 'other'];
 
         foreach ($conditions as $condition) {

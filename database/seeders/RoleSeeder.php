@@ -9,6 +9,8 @@ class RoleSeeder extends Seeder
 {
     public function run(): void
     {
+
+        Role::truncate();
         $roles = ['driver', 'callcenter', 'admin'];
 
         foreach ($roles as $role) {

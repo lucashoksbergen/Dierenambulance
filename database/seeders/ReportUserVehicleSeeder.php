@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Report;
+use App\Models\ReportUserVehicle;
 use App\Models\UserVehicle;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -12,22 +13,42 @@ class ReportUserVehicleSeeder extends Seeder
 
     public function run(): void
     {
+
+        ReportUserVehicle::truncate();
+
         $userVehicles = UserVehicle::all();
         $reports = Report::all();
-        foreach ($userVehicles as $userVehicleItem) {
-            $randomReports = collect($reports->random(min(3, $reports->count())));
-            foreach ($randomReports as $reportItem) {
-                DB::table('report_user_vehicle')->updateOrInsert(
-                    [
-                        'report_id' => $reportItem->id,
-                        'user_vehicle_id' => $userVehicleItem->id,
-                    ],
-                    [
-                        'created_at' => now(),
-                        'updated_at' => now(),
-                    ]
-                );
-            }
+
+        foreach ($reports as $reportItem) {
+            $driverUserVehicle = $userVehicles
+                ->where('role', 'driver')
+                ->random();
+            ReportUserVehicle::updateOrCreate(
+                [
+                    'report_id' => $reportItem->id,
+                    'user_vehicle_id' => $driverUserVehicle->id,
+                ],
+                [
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]
+            );
+            $codriverUserVehicle = $userVehicles
+                ->where('role', 'codriver')
+                ->where('user_id', '!=', $driverUserVehicle->user_id)
+                ->random();
+            ReportUserVehicle::updateOrCreate(
+                [
+                    'report_id' => $reportItem->id,
+                    'user_vehicle_id' => $codriverUserVehicle->id,
+                ],
+                [
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]
+            );
+            // Ensures that each report has one driver and one codriver assigned.
         }
+
     }
 }
