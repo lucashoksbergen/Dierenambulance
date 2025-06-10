@@ -22,7 +22,7 @@ class ReportFactory extends Factory
     {
         return [
             // Does not set the other ids used in this, this does occur in the seeder
-            'type' => fake()->randomElement(['taxi', 'emergency']),
+            'type' => fake()->randomElement(['taxi', 'stray', 'pet']),
             'date' => fake()->date(),
 
             'report_status' => fake()->randomElement(['open', 'closed', 'in_progress']),

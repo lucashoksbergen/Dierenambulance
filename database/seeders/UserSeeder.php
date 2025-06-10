@@ -6,15 +6,18 @@ use App\Models\Role;
 use App\Models\RoleUser;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Schema;
 
 class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        // Creates users and fills the role_user pivot table with random entries
         RoleUser::truncate();
+
+        // Rerunning this seeder will create new users that have matching ids to the users linked in the reports table. Thus rerunning this seeder is not recommended if you have reports.
+        Schema::disableForeignKeyConstraints();
         User::truncate();
+        Schema::enableForeignKeyConstraints();
 
         User::factory()->count(10)->create()->each(function (User $user) {
             $randomRoles = Role::inRandomOrder()->take(rand(1, 3))->pluck('id');

@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['taxi', 'emergency']);
+            $table->enum('type', ['taxi', 'stray', 'pet']);
             $table->text('date'); // YYYY-MM-DD, date of the report, usefull for taxi rides
 
             $table->text('report_status');
