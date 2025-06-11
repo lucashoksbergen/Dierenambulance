@@ -16,6 +16,14 @@ return new class extends Migration {
             $table->text('date'); // YYYY-MM-DD, date of the report, usefull for taxi rides
 
             $table->text('report_status');
+
+            $table->string('street_name');
+            $table->integer('house_number');
+            $table->string('postal_code');
+            $table->string('city'); // Home town/city/etc.
+            // Needed for filtering data
+            $table->string('municipality');
+
             $table->boolean('rijkswaterstaat_called');
 
             // Using nullOnDelete() to not wipe the report if user or caller entries are deleted, preventing data loss
