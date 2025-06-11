@@ -9,6 +9,7 @@ body {
         "sidebar footer";
 }
 nav {
+    z-index: 999;
     top: 0;
     position: sticky;
     grid-area: navbar;
@@ -101,7 +102,7 @@ aside .sidebar-links ul a li.active {
 }
 main {
     grid-area: main;
-    padding: 20px 16px;
+    padding: 0px 16px 20px 16px;
 }
 footer {
     grid-area: footer;
@@ -110,11 +111,12 @@ footer {
     display: none;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 896px) {
     body {
         grid-template-columns: 0 1fr;
     }
     aside {
+        z-index: 1000;
         position: sticky;
         width: 300px;
         display: none;

@@ -1,0 +1,97 @@
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* Label styling */
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: #000;
+}
+
+/* Red asterisk */
+.form-group label .required {
+    color: red;
+    margin-left: 2px;
+}
+
+/* Disabled state */
+.form-group.is-disabled label {
+    color: #a0a0a0;
+}
+
+.form-group.is-disabled .select-wrapper {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Wrapper around select */
+.select-wrapper {
+    max-height: 44px;
+    height: 44px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px 12px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    transition: border 0.2s ease;
+}
+
+/* Hover and focus with primary color */
+.select-wrapper:hover {
+    border-color: var(--color-primary);
+}
+
+.select-wrapper:focus-within {
+    border-color: var(--color-primary);
+}
+
+/* Select element itself */
+.select-field {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    border: none;
+    flex: 1;
+    font-size: 14px;
+    padding: 12px 0;
+    color: #333;
+}
+
+.select-field:invalid {
+    color: #a0a0a0;
+}
+
+.select-field:focus {
+    outline: none;
+}
+
+/* Dropdown chevron icon */
+.select-icon {
+    position: absolute;
+    right: 12px;
+    font-size: 14px;
+    color: #9ca3af;
+    pointer-events: none;
+}
+
+/* Change icon color on hover/focus */
+.select-wrapper:hover .select-icon,
+.select-wrapper:focus-within .select-icon {
+    color: var(--color-primary);
+}
+
+/* Error state */
+.form-group.has-error .select-wrapper {
+    border-color: #d64545;
+}
+
+.error-message {
+    color: #d64545;
+    font-size: 14px;
+    margin-top: 4px;
+}
