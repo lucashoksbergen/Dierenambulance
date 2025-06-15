@@ -13,11 +13,12 @@ return new class extends Migration {
         Schema::create('transfers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('vehicle_id')->constrained('vehicles')->cascadeOnDelete();
-            $table->boolean('materials_check');
+            $table->boolean('materials_check')->default('false');
             $table->integer('cash_before');
-            $table->integer('cash_after');
+            $table->integer('cash_after')->nullable();
             $table->integer('km_start');
-            $table->integer('km_end');
+            $table->integer('km_end')->nullable();
+            $table->boolean('is_done')->default('false');
             $table->timestamps();
 
         });

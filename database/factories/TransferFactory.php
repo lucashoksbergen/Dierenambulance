@@ -24,6 +24,7 @@ class TransferFactory extends Factory
             'cash_after' => $cash,
             'km_start' => fake()->numberBetween(0, 10000),
             'km_end' => fake()->numberBetween(0, 10000),
+            'is_done' => true,
         ];
     }
 }

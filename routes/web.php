@@ -33,11 +33,10 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group(function () {
 
     // Protected routes go here
-
-    // Route::get('/dashboard', function () {
-    //     return view('dashboard');
-    // })->name('dashboard');
     Route::get('/dashboard', [ReportController::class, 'index'])->name('dashboard');
+    
+    Route::get('/transfer', [AuthController::class, 'transfer'])->name('transfer');
+    Route::post('/complete-transfer', [AuthController::class, 'completeTransfer'])->name('transfer.complete');
 
 });
 
