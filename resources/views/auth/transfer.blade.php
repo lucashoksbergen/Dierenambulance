@@ -1,8 +1,4 @@
-@php
-    $layout = auth()->check() ? 'layouts.app' : 'layouts.guest';
-@endphp
-
-@extends($layout)
+@extends($layout = 'layouts.transfer-layout')
 
 @section('title', 'DierenAmbulance - Transfer')
 
@@ -20,10 +16,10 @@
                 <input type="hidden" name="came_from" value="{{ session('came_from') }}">
 
                 <!-- Logging in -->
-                    <div class="form-group">
-                        <label for="vehicle_number">What Ambulance?<span>*</span></label>
-                        <input type="text" id="vehicle_number" name="vehicle_number" required>
-                    </div>
+                <div class="form-group">
+                    <label for="vehicle_number">What Ambulance?<span>*</span></label>
+                    <input type="text" id="vehicle_number" name="vehicle_number" required>
+                </div>
 
                 @if (session('came_from') === 'login')
 

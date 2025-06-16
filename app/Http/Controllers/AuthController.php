@@ -36,7 +36,7 @@ class AuthController extends Controller
             // return redirect()->route('dashboard');
 
             // Redirects to transfer first
-            session()->flash('came_from', 'login');
+            session()->put('came_from', 'login');
 
             return redirect()->route('transfer');
         }
@@ -77,7 +77,7 @@ class AuthController extends Controller
     {
 
         $cameFrom = $request->input('came_from');
-
+        session()->forget('came_from');
         if ($cameFrom === 'logout') {
 
             $validated = $request->validate([
