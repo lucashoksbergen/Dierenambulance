@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transfer;
+use App\DTOs\LoginTransferData;
+use App\DTOs\LogoutTransferData;
+use App\Http\Requests\LoginTransferRequest;
+use App\Http\Requests\LogoutTransferRequest;
+use App\Services\TransferService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -10,12 +14,18 @@ use Illuminate\Support\Facades\Cookie;
 
 class AuthController extends Controller
 {
-    //
+
+    public function __construct(protected TransferService $transferService)
+    {
+    }
+
+
     public function showLogin()
     {
         // Return the login view
         return view('auth.login');
     }
+
 
     public function login(Request $request)
     {
@@ -36,9 +46,8 @@ class AuthController extends Controller
             // return redirect()->route('dashboard');
 
             // Redirects to transfer first
-            session()->put('came_from', 'login');
 
-            return redirect()->route('transfer');
+            return redirect()->route('transfer.form.login');
         }
 
         // If authentication fails, throw a validation exception
@@ -48,107 +57,62 @@ class AuthController extends Controller
 
     }
 
-    // public function logout(Request $request)
-    // {
-    //     // Log the user out 
-    //     Auth::logout();
-    //     // Invalidate the session and regenerate the CSRF token
-    //     $request->session()->invalidate();
-    //     $request->session()->regenerateToken();
-    //     // Redirect to the login page
-    //     Cookie::queue(Cookie::forget(Auth::getRecallerName()));
 
-    //     return redirect()->route('show.login');
-    // }
     public function logout()
     {
-        session()->put('came_from', 'logout');
-        return redirect()->route('transfer');
+        return redirect()->route('transfer.form.logout');
     }
 
 
-    public function transfer()
+    public function transferFormLogout()
     {
-        return view('auth.transfer');
+        return view('auth.transfer', ['mode' => 'logout']);
     }
-    // When the initial login happens, cash_before and km_start are not set yet, thus there needs to be a failsafe to have these match the cash_After and km_end if there is no prior entry.
 
-    public function completeTransfer(Request $request)
+    public function transferFormLogin()
     {
+        return view('auth.transfer', ['mode' => 'login']);
+    }
 
-        // session()->get('came_from') ?
-        //     $cameFrom = session('came_from')
-        //     : $cameFrom = $request->input('came_from');
 
-        $cameFrom = session('came_from');
 
-        session()->forget('came_from');
 
-        if ($cameFrom === 'logout') {
 
-            $validated = $request->validate([
-                'vehicle_number' => 'required',
-                'materials_check' => 'required|boolean',
-                'cash_before' => 'required',
-                'km_start' => 'required',
-            ]);
+    public function handleLogout(LogoutTransferRequest $request)
+    {
+        $dto = new LogoutTransferData(
+            $request->vehicle_number,
+            $request->materials_check,
+            $request->cash_before,
+            $request->km_start,
+        );
 
-            $transfer = Transfer::create([
-                'vehicle_id' => $validated['vehicle_number'],
-                'materials_check' => $validated['materials_check'],
-                'cash_before' => $validated['cash_before'],
-                'km_start' => $validated['km_start'],
-                'is_done' => false,
-            ]);
+        $this->transferService->transferOnLogout($dto);
 
-            // Logout as normal
-            Auth::logout();
-            // Invalidate the session and regenerate the CSRF token
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
-            // Redirect to the login page
-            Cookie::queue(Cookie::forget(Auth::getRecallerName()));
+        // Logout as normal
+        Auth::logout();
+        // Invalidate the session and regenerate the CSRF token
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        // Redirect to the login page
+        Cookie::queue(Cookie::forget(Auth::getRecallerName()));
 
-            return redirect()->route('show.login');
+        return redirect()->route('show.login');
+    }
 
-        } else {
-            // Came from logging in 
-            $validated = $request->validate([
-                'vehicle_number' => 'required',
-                'materials_check' => 'required|boolean',
-                'cash_after' => 'required',
-                'km_end' => 'required',
-            ]);
 
-            $transfer = Transfer::where('vehicle_id', $validated['vehicle_number'])
-                ->where('is_done', false)
-                ->first();
+    public function handleLogin(LoginTransferRequest $request)
+    {
+        $dto = new LoginTransferData(
+            $request->vehicle_number,
+            $request->materials_check,
+            $request->cash_after,
+            $request->km_end,
+        );
 
-            if ($transfer) {
-                $transfer->update([
-                    'materials_check' => $validated['materials_check'],
-                    'cash_after' => $validated['cash_after'],
-                    'km_end' => $validated['km_end'],
-                    'is_done' => true,
-                    'updated_at' => now(),
-                ]);
-            } else {
-                // No other user has logged out yet, so a transfer entry is created instead. This should only happen once per vehicle
-                // km_start and cash_before are simply filled with the same data as after/end, since no actual transfer happened
-                $transfer = Transfer::create([
-                    'vehicle_id' => $validated['vehicle_number'],
-                    'materials_check' => $validated['materials_check'],
-                    'cash_before' => $validated['cash_after'],
-                    'cash_after' => $validated['cash_after'],
-                    'km_start' => $validated['km_end'],
-                    'km_end' => $validated['km_end'],
-                    'is_done' => true,
-                ]);
-            }
+        $this->transferService->transferOnLogin($dto);
 
-            return redirect()->route('dashboard');
-
-        }
+        return redirect()->route('dashboard');
 
     }
 

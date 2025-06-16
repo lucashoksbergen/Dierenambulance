@@ -23,8 +23,7 @@ class TransferTest extends TestCase
 
         //Act
         $response = $this
-            ->withSession(['came_from' => 'logout'])
-            ->post(route('transfer.complete'), [
+            ->post(route('transfer.logout'), [
                 'vehicle_number' => 3,
                 'materials_check' => true,
                 'cash_before' => '125',
@@ -47,7 +46,6 @@ class TransferTest extends TestCase
     public function test_login_updates_existing_transfer_entry(): void
     {
 
-
         //Arrange
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -63,8 +61,7 @@ class TransferTest extends TestCase
 
         //Act
         $response = $this
-            ->withSession(['came_from' => 'login'])
-            ->post(route('transfer.complete'), [
+            ->post(route('transfer.login'), [
                 'vehicle_number' => '3',
                 'materials_check' => true,
                 'cash_after' => '125',
@@ -86,8 +83,6 @@ class TransferTest extends TestCase
     public function test_login_creates_full_transfers_entry()
     {
 
-        $this->withoutExceptionHandling();
-
         //Arrange
         $user = User::factory()->create();
         $this->actingAs($user);
@@ -96,7 +91,7 @@ class TransferTest extends TestCase
 
 
         //Act
-        $response = $this->withSession(['came_from' => 'login'])->post(route('transfer.complete'), [
+        $response = $this->post(route('transfer.login'), [
             'vehicle_number' => $vehicle->id,
             'materials_check' => true,
             'cash_after' => '125',

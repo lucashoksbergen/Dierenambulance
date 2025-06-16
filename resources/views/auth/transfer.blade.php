@@ -9,33 +9,20 @@
 
 
 
-            <form method="POST" action="{{ route('transfer.complete') }}">
+
+
+            <form method="POST" action="{{ $mode === 'logout' ?
+        route('transfer.logout') :
+        route('transfer.login') }}">
                 @csrf
 
-                <!-- Stores where the user came from -->
-                <input type="hidden" name="came_from" value="{{ session('came_from') }}">
-
-                <!-- Logging in -->
                 <div class="form-group">
                     <label for="vehicle_number">What Ambulance?<span>*</span></label>
                     <input type="text" id="vehicle_number" name="vehicle_number" required>
                 </div>
 
-                @if (session('came_from') === 'login')
+                @if ($mode === 'logout')
 
-                    <div class="form-group">
-                        <label for="km_end">KM Count?<span>*</span></label>
-                        <input type="text" id="km_end" name="km_end" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="cash_after">Cash Amount?<span>*</span></label>
-                        <input type="text" id="cash_after" name="cash_after" required>
-                    </div>
-                @endif
-
-                <!-- Logging out -->
-                @if (session('came_from') === 'logout')
                     <div class="form-group">
                         <label for="km_start">KM Count?<span>*</span></label>
                         <input type="text" id="km_start" name="km_start" required>
@@ -45,8 +32,25 @@
                         <label for="cash_before">Cash Amount?<span>*</span></label>
                         <input type="text" id="cash_before" name="cash_before" required>
                     </div>
+
+
                 @endif
 
+                @if ($mode === 'login')
+
+                    <div class="form-group">
+                        <label for="km_end">KM Count?<span>*</span></label>
+                        <input type="text" id="km_end" name="km_end" required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="cash_after">Cash Amount?<span>*</span></label>
+                        <input type="text" id="cash_after" name="cash_after" required>
+                    </div>
+
+                @endif
+                
                 <div class="remember-me">
                     <label>
                         <input type="hidden" value="0" name="materials_check">

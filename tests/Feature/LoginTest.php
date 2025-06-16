@@ -28,7 +28,7 @@ class LoginTest extends TestCase
 
 
         // Assert
-        $response->assertRedirect('/transfer');
+        $response->assertRedirect(route('transfer.form.login'));
         $this->assertAuthenticatedAs($user);
 
     }

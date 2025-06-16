@@ -27,16 +27,21 @@ Route::get('/home', function () {
 // Authentication routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('show.login');
 Route::post('/login', [AuthController::class, 'login'])->middleware(CustomRememberMe::class)->name('login'); // Custom middleware to handle remember me functionality
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //Protected routes
 Route::middleware('auth')->group(function () {
 
     // Protected routes go here
     Route::get('/dashboard', [ReportController::class, 'index'])->name('dashboard');
-    
-    Route::get('/transfer', [AuthController::class, 'transfer'])->name('transfer');
-    Route::post('/complete-transfer', [AuthController::class, 'completeTransfer'])->name('transfer.complete');
+
+    Route::get('/transfer/logout', [AuthController::class, 'transferFormLogout'])->name('transfer.form.logout');
+    Route::get('/transfer/login', [AuthController::class, 'transferFormLogin'])->name('transfer.form.login');
+
+    Route::post('/transfer/logout', [AuthController::class, 'handleLogout'])->name('transfer.logout');
+    Route::post('/transfer/login', [AuthController::class, 'handleLogin'])->name('transfer.login');
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 
 });
 
