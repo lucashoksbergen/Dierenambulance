@@ -62,7 +62,7 @@ class AuthController extends Controller
     // }
     public function logout()
     {
-        session()->flash('came_from', 'logout');
+        session()->put('came_from', 'logout');
         return redirect()->route('transfer');
     }
 
@@ -76,8 +76,14 @@ class AuthController extends Controller
     public function completeTransfer(Request $request)
     {
 
-        $cameFrom = $request->input('came_from');
+        // session()->get('came_from') ?
+        //     $cameFrom = session('came_from')
+        //     : $cameFrom = $request->input('came_from');
+
+        $cameFrom = session('came_from');
+
         session()->forget('came_from');
+
         if ($cameFrom === 'logout') {
 
             $validated = $request->validate([
