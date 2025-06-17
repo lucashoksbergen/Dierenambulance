@@ -5,7 +5,13 @@
 @section('content')
     <div class="login-container">
         <div class="login-card">
-            <h2>Please fill in the remaining info</h2>
+
+            @if ($mode === 'logout')
+                <h2>Fill in remaining information to complete Logout.</h2>
+            @endif
+            @if ($mode === 'login')
+                <h2>Fill in remaining information to complete Login.</h2>
+            @endif
 
 
 
@@ -50,7 +56,7 @@
                     </div>
 
                 @endif
-                
+
                 <div class="remember-me">
                     <label>
                         <input type="hidden" value="0" name="materials_check">

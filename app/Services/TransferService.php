@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\DTOs\LoginTransferData;
 use App\DTOs\LogoutTransferData;
-use App\Models\Transfer;
 use App\Repositories\TransferRepository;
 
 class TransferService

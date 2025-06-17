@@ -12,13 +12,15 @@ class LoginTest extends TestCase
     use RefreshDatabase;
 
     // Test whether the user can login with correct credentials
+
+
     public function test_user_can_login(): void
     {
+
         // Arrange
         $user = User::factory()->create([
             'password' => bcrypt('passwordtest'),
         ]);
-
 
         // Act
         $response = $this->post('/login', [
@@ -36,6 +38,7 @@ class LoginTest extends TestCase
     // Test whether the user can login with an incorrect password
     public function test_user_cannot_login()
     {
+        
         // Arrange
         $user = User::factory()->create([
             'password' => bcrypt('incorrect'),
@@ -50,7 +53,7 @@ class LoginTest extends TestCase
 
 
         // Assert
-        $response->assertSessionHasErrors();
+        $response->assertSessionHasErrors('error');
         $this->assertGuest();
 
     }

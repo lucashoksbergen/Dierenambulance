@@ -4,7 +4,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Middleware\CustomRememberMe;
 
 Route::get('/', function () {
     // If the user is authenticated, redirect to the dashboard
@@ -26,10 +25,10 @@ Route::get('/home', function () {
 
 // Authentication routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('show.login');
-Route::post('/login', [AuthController::class, 'login'])->middleware(CustomRememberMe::class)->name('login'); // Custom middleware to handle remember me functionality
+Route::post('/login', [AuthController::class, 'login'])->middleware('custom.remember')->name('login'); // Custom middleware to handle remember me functionality
 
 //Protected routes
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth'])->group(function () {
 
     // Protected routes go here
     Route::get('/dashboard', [ReportController::class, 'index'])->name('dashboard');
@@ -39,8 +38,6 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/transfer/logout', [AuthController::class, 'handleLogout'])->name('transfer.logout');
     Route::post('/transfer/login', [AuthController::class, 'handleLogin'])->name('transfer.login');
-
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 });

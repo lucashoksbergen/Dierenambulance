@@ -214,4 +214,7 @@ return [
 
     'partitioned' => env('SESSION_PARTITIONED_COOKIE', false),
 
+
+    'remember_me_duration' => env('REMEMBER_ME_DURATION', 1440)
+
 ];
