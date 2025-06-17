@@ -4,12 +4,13 @@ namespace App\Services;
 
 use App\DTOs\LoginTransferData;
 use App\DTOs\LogoutTransferData;
+use App\Interfaces\TransferRepositoryInterface;
 use App\Repositories\TransferRepository;
 
 class TransferService
 {
 
-    public function __construct(protected TransferRepository $transferRepository)
+    public function __construct(protected TransferRepositoryInterface $transferRepository)
     {
     }
 

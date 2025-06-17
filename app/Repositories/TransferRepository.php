@@ -2,9 +2,10 @@
 
 namespace App\Repositories;
 
+use App\Interfaces\TransferRepositoryInterface;
 use App\Models\Transfer;
 
-class TransferRepository
+class TransferRepository implements TransferRepositoryInterface
 {
     public function findTransferByUnfinishedVehicle(int $vehicleId)
     {
