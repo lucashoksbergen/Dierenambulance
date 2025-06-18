@@ -45,6 +45,11 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
+// TODO: ROUTES TO BE PROTECTED BY AUTHENTICATION
+Route::get('/finish-form', function () {
+   return view('ambulance-form');
+})->name('finish.form');
+
 
 //TESTING HERE v ----------------
 
