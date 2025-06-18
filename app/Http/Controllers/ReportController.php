@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\DTOs\ReportFilterData;
-use App\Models\Report;
 use App\Services\ReportFilterService;
 use Illuminate\Http\Request;
 
