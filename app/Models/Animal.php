@@ -12,7 +12,7 @@ class Animal extends Model
     use HasFactory, Notifiable;
 
     protected $guarded = [];
-
+    
 
     public function reports()
     {

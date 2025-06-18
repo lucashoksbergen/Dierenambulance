@@ -24,7 +24,10 @@ Route::get('/home', function () {
 })->name('home');
 
 // Authentication routes
-Route::get('/login', [AuthController::class, 'showLogin'])->name('show.login');
+Route::middleware('throttle:api')->group(function () { // Rate limited
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('show.login');
+});
+
 Route::post('/login', [AuthController::class, 'login'])->middleware('custom.remember')->name('login'); // Custom middleware to handle remember me functionality
 
 //Protected routes
