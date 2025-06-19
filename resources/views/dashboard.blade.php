@@ -10,33 +10,33 @@
   <h1>Dashboard</h1>
 
   <form method="GET" action="{{ route('dashboard') }}">
-    <input type="text" name="municipality" placeholder="Municipality ..." />
+    <input type="text" name="municipality" placeholder="Gemeente ..." />
 
     <select name="animaltype">
-    <option value="">All Animal Types</option>
-    <option value="dog">Dog</option>
-    <option value="cat">Cat</option>
-    <option value="bird">Bird</option>
-    <option value="other">Other
-      <input type="text" name="othertype" placeholder="If other ..." />
+    <option value="">Alle Diersoorten</option>
+    <option value="dog">Hond</option>
+    <option value="cat">Kat</option>
+    <option value="bird">Vogel</option>
+    <option value="other">Anders
+      <input type="text" name="othertype" placeholder="Als anders ..." />
     </option>
     </select>
     <select name="reporttype">
-    <option value="">All Report Types</option>
-    <option value="pet">Pet</option>
-    <option value="stray">Stray</option>
+    <option value="">Alle melding types</option>
+    <option value="pet">Huisdier</option>
+    <option value="stray">Zwerf</option>
     <option value="taxi">Taxi</option>
     </select>
 
-    <input type="text" name="city" placeholder="Location of Animal" />
+    <input type="text" name="city" placeholder="Locatie van het dier" />
 
     <input type="date" name="date" />
 
     <select name="status">
-    <option value="">All Statuses</option>
+    <option value="">Alle Statusen</option>
     <option value="open">Open</option>
-    <option value="closed">Closed</option>
-    <option value="in_progress">In Progress</option>
+    <option value="closed">Gesloten</option>
+    <option value="in_progress">Bezig</option>
     </select>
 
     <button type="submit">Filter</button>
@@ -46,20 +46,20 @@
   @isset($reports)
     @if ($reports->count())
     @foreach ($reports as $report)
-    <p>Animal Type: {{ $report->animal->type }}</p>
-    <p>Report Type: {{ $report->type }}</p>
-    <p>Condition:
+    <p>Diersoort: {{ $report->animal->type }}</p>
+    <p>Type melding: {{ $report->type }}</p>
+    <p>Conditie:
     @foreach ($report->animal->conditions as $condition)
     {{ $condition->name }}{{ !$loop->last ? ', ' : '' }}
     @endforeach
     </p>
-    <p>Drivers:
+    <p>Chauffeurs:
     @foreach ($report->userVehicles as $driver)
     {{ $driver->user->name }}{{ !$loop->last ? ', ' : '' }}
     @endforeach
     </p>
-    <p>Municipality: {{ $report->animal->owner->municipality }}</p>
-    <p>Report Status: {{ $report->report_status }}</p>
+    <p>Gemeente: {{ $report->animal->owner->municipality }}</p>
+    <p>Status Melding: {{ $report->report_status }}</p>
     <br>
     @endforeach
 

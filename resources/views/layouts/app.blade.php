@@ -38,7 +38,7 @@
     <button class="showSidebar-btn" onclick="toggleSidebar()">Button</button>
 
     <div class="welcome-message">
-      Welcome back,{{-- {{ auth()->user()->name }}! --}}
+      Welkom terug{{-- {{ auth()->user()->name }}! --}}
     </div>
     <form action="{{ route('transfer.form.logout') }}" method="GET" class="logout-form">
       @csrf
@@ -76,14 +76,14 @@
                 fill="{{ request()->routeIs('welcome') ? '#fff' : '#4c7961' }}" />
             </svg>
 
-            Reports
+            Meldingen
           </li>
         </a>
       </ul>
 
       <ul>
         <a href="#">
-          <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">My Profile</li>
+          <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">Mijn Profiel</li>
         </a>
       </ul>
 

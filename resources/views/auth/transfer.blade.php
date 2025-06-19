@@ -7,10 +7,10 @@
         <div class="login-card">
 
             @if ($mode === 'logout')
-                <h2>Fill in remaining information to complete Logout.</h2>
+                <h2>Vul de volgende informatie in om de logout af te maken.</h2>
             @endif
             @if ($mode === 'login')
-                <h2>Fill in remaining information to complete Login.</h2>
+                <h2>Vul de volgende informatie in om de login af te maken.</h2>
             @endif
 
 
@@ -23,19 +23,19 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="vehicle_number">What Ambulance?<span>*</span></label>
+                    <label for="vehicle_number">Welk ambulance nummer?<span>*</span></label>
                     <input type="text" id="vehicle_number" name="vehicle_number" required>
                 </div>
 
                 @if ($mode === 'logout')
 
                     <div class="form-group">
-                        <label for="km_start">KM Count?<span>*</span></label>
+                        <label for="km_start">KM teller?<span>*</span></label>
                         <input type="text" id="km_start" name="km_start" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="cash_before">Cash Amount?<span>*</span></label>
+                        <label for="cash_before">Hoeveel contant geld?<span>*</span></label>
                         <input type="text" id="cash_before" name="cash_before" required>
                     </div>
 
@@ -45,13 +45,13 @@
                 @if ($mode === 'login')
 
                     <div class="form-group">
-                        <label for="km_end">KM Count?<span>*</span></label>
+                        <label for="km_end">KM teller?<span>*</span></label>
                         <input type="text" id="km_end" name="km_end" required>
                     </div>
 
 
                     <div class="form-group">
-                        <label for="cash_after">Cash Amount?<span>*</span></label>
+                        <label for="cash_after">Hoeveel contant geld?<span>*</span></label>
                         <input type="text" id="cash_after" name="cash_after" required>
                     </div>
 
@@ -60,12 +60,11 @@
                 <div class="remember-me">
                     <label>
                         <input type="hidden" value="0" name="materials_check">
-                        <input type="checkbox" value="1" name="materials_check" {{ old('materials_check') ? 'checked' : '' }}> All materials
-                        present?
+                        <input type="checkbox" value="1" name="materials_check" {{ old('materials_check') ? 'checked' : '' }}> Al het materiaal aanwezig?
                     </label>
                 </div>
 
-                <button class="btn-login-form" type="submit">Submit</button>
+                <button class="btn-login-form" type="submit">Verzenden</button>
 
                 @if ($errors->any())
                     <ul>

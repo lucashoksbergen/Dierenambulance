@@ -39,7 +39,7 @@
   
 
     <div class="logo"><img src="{{ asset('assets/img/LogoDAFRL-350x224-pub.jpg') }}" alt="" srcset=""></div>
-    <a href="{{ route('show.login') }}" class="btn-login">Login In</a>
+    <a href="{{ route('show.login') }}" class="btn-login">Log In</a>
 
   </nav>
 
